@@ -37,6 +37,7 @@ jobs:
           ./configure --prefix=/opt/vde
           make PREFIX=/opt/vde
           sudo make PREFIX=/opt/vde install
+          file /opt/vde/bin/*
           # cleanup
           make distclean
           # cross-compile for arm64
@@ -48,6 +49,7 @@ jobs:
           ./configure --prefix=/opt/vde.arm64 --host=arm-apple-darwin --target=arm-apple-darwin --build=x86_64-apple-darwin
           make PREFIX=/opt/vde.arm64
           sudo make PREFIX=/opt/vde.arm64 install
+          file /opt/vde.arm64/bin/*
           unset SDKROOT CC CXX CFLAGS CXXFLAGS
       - name: Make and Install vde_vmnet (x86_64)
         run: |
